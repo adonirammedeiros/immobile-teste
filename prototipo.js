@@ -11,27 +11,41 @@ document.addEventListener("DOMContentLoaded", function(event) {
       let tabObrigatorio = getElementByXpath("//div[text()='OBRIGATORIOS']")
       let localizacao = getElementByXpath("//div[text()='Localizacao']")
       let tabLocalizacao = getElementByXpath("//div[text()='LOCALIZACAO']")
+			let notificaoDeSalvamento = document.querySelectorAll(".FlairBuilderWidget.Rectangle")[4]
+			notificaoDeSalvamento.style.display = 'none';
+			
+			let botaoSalvar = document.querySelectorAll(".FlairBuilderWidget.Image")[1]
+			botaoSalvar.onclick = function(){
+					notificaoDeSalvamento.style.display = "block";
+					notificaoDeSalvamento.style.top = "100px";
+					setTimeout(function(){
+							notificaoDeSalvamento.style.display='none';
+							botaoSalvar.classList.remove('rodape')
+						}, 3500);
+				};
+				
       let metadeDaJanela = window.innerHeight / 2;
-      tabObrigatorio.style.borderBottom = sublinhado
+      tabObrigatorio.classList.add("sublinhado")
       
       window.onscroll = function(){
-            tabObrigatorio.style.borderBottom = null
-            tabAnuncio.style.borderBottom = null
-            tabLocalizacao.style.borderBottom = null
+            tabObrigatorio.classList.remove("sublinhado")
+            tabAnuncio.classList.remove("sublinhado")
+						tabAnuncio.style.minWidth = "75px";
+            tabLocalizacao.classList.remove("sublinhado")
 
            if(localizacao.getBoundingClientRect().top < metadeDaJanela){
-             tabLocalizacao.style.borderBottom = sublinhado
+             tabLocalizacao.classList.add("sublinhado")
            }else if(anuncio.getBoundingClientRect().top < metadeDaJanela){              
-              tabAnuncio.style.borderBottom = sublinhado
+              tabAnuncio.classList.add("sublinhado")
            } else{            
-                tabObrigatorio.style.borderBottom = sublinhado
+                tabObrigatorio.classList.add("sublinhado")
            }
       }
 
     var comboTransacao = document.querySelectorAll(".FlairBuilderWidget.ComboBox>select")[3]
     comboTransacao.onchange = function(){
-        let botaoSalvar = document.querySelectorAll(".FlairBuilderWidget.Image")[1]
         botaoSalvar.style.top = null
         botaoSalvar.classList.add("rodape")
+				
     }  
 });

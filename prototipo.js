@@ -6,21 +6,29 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
       let verdeImmobile = "#388275";
       let sublinhado = `thick solid ${verdeImmobile}`
+			
+			let cabecalho = document.querySelectorAll("div.FlairBuilderWidget.FlairComponentsGroup")[0]
+			cabecalho.classList.add("cabecalho")
       let anuncio = getElementByXpath("//div[text()='Anuncio']")
       let tabAnuncio = getElementByXpath("//div[text()='ANUNCIO']")
       let tabObrigatorio = getElementByXpath("//div[text()='OBRIGATORIOS']")
       let localizacao = getElementByXpath("//div[text()='Localizacao']")
       let tabLocalizacao = getElementByXpath("//div[text()='LOCALIZACAO']")
 			let notificaoDeSalvamento = document.querySelectorAll(".FlairBuilderWidget.Rectangle")[4]
-			notificaoDeSalvamento.style.display = 'none';
+			notificaoDeSalvamento.style.display = "none"
+				
+			
+			let grupoSalvamento = document.querySelectorAll("div.FlairBuilderWidget.FlairComponentsGroup")[2]
+			grupoSalvamento.style.top = null
+			grupoSalvamento.classList.add("rodape")
 			
 			let botaoSalvar = document.querySelectorAll(".FlairBuilderWidget.Image")[1]
 			botaoSalvar.onclick = function(){
-					notificaoDeSalvamento.style.display = "block";
-					notificaoDeSalvamento.style.top = "100px";
+				  notificaoDeSalvamento.style.display = "block";					
+					notificaoDeSalvamento.style.position = "fixed";
+					notificaoDeSalvamento.style.top = "100px"
 					setTimeout(function(){
 							notificaoDeSalvamento.style.display='none';
-							botaoSalvar.classList.remove('rodape')
 						}, 3500);
 				};
 				
@@ -44,8 +52,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     var comboTransacao = document.querySelectorAll(".FlairBuilderWidget.ComboBox>select")[3]
     comboTransacao.onchange = function(){
-        botaoSalvar.style.top = null
-        botaoSalvar.classList.add("rodape")
-				
+        botaoSalvar.style.zIndex = 1000				
     }  
 });

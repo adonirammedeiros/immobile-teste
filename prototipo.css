@@ -1,19 +1,14 @@
-body{
-    width:360px;
-    margin-bottom: 40px;
-}
- div.FlairBuilderWidget.FlairComponentsGroup{
+ .cabecalho{
      position: fixed;
      top:0px;
  }
 
  .rodape {
-    position:fixed !important;
+    position:fixed;
 		display:block;
-    bottom:20px;
+    bottom:0px;
     left:0px;
     right:0px;
-    height:50px;
     margin-bottom:0px;
  }
  

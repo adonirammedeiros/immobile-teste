@@ -1,0 +1,38 @@
+$(document).ready(function() {		
+   $(".FlairBuilderWidget.HotSpot").live('click',function(){
+		  alert('teste')
+			$("div:contains('OBRIGATORIOS')").addClass("sublinhado") 
+	});
+	
+    window.onscroll = function() {
+			$("div:contains('OBRIGATORIOS')").addClass("sublinhado") 
+			let anuncio = $("div:contains('Anuncio')")
+			let tabAnuncio = $("div:contains('ANUNCIO')")
+			
+			let localizacao = $("div:contains('Localizacao')")
+			let tabLocalizacao = $("div:contains('LOCALIZACAO')")
+			let metadeDaJanela = window.innerHeight / 2;
+			
+        if ( localizacao.offset().top < metadeDaJanela) {
+					tabObrigatorio.removeClass("sublinhado")
+					tabAnuncio.removeClass("sublinhado")
+					tabLocalizacao.addClass("sublinhado")
+        } else if( anuncio.offset().top < metadeDaJanela) {
+					tabObrigatorio.removeClass("sublinhado")
+					tabAnuncio.addClass("sublinhado")
+					tabLocalizacao.removeClass("sublinhado")
+        } else {
+            tabObrigatorio.addClass("sublinhado")
+					  tabAnuncio.removeClass("sublinhado")
+					  tabLocalizacao.removeClass("sublinhado")
+        }
+    }
+
+    let comboTransacao = $(".FlairBuilderWidget.ComboBox>select").eq(3)
+    $(comboTransacao).change( function() {
+        let botaoSalvar = $(".FlairBuilderWidget.Image").eq(1)
+        $(botaoSalvar).css("top",null)
+				$(botaoSalvar).addClass("rodape")
+    })
+});
+$()
